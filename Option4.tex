@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\newtheorem{proposition}{Proposition}
+\title{Option 4: Supremum of Union Bound}
+\author{Brooke Freeman}
+\date{Nov. 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Option 4}
+Suppose set $A$ and $B$ both have supremums, $\alpha = \sup(A)$ and $\beta = \sup(B)$.\\
+Prove that $\sup(A \cup B)$ exists, and $\sup(A \cup B) \geq \max\{\alpha,\beta\}$.\\
+\indent a. Can this inequality be strict? 
+
+\section{Rewrite}
+Suppose set $A$ and $B$ both have supremums, $\alpha = \sup(A)$ and $\beta = \sup(B)$.\\
+Let set $X = (A \cup B) = \{x \mid x \in A \lor x \in B\}$\\
+Prove $\sup(X)$ exists and $\sup(X) \geq \max\{\alpha,\beta\}$.\\
+\indent a. Can this inequality be strict?
+
+\section{Proving $\sup(X)$ exists}
+
+\begin{proof} 
+Assume $A$ is empty. Note: we know $\sup(A) = \alpha$ exists.\\
+Let $\varepsilon > 0$, if $A$ is empty then by defn. of an upper bound $\alpha - \varepsilon$ is an upper bound of $A$, so\\
+\indent $\alpha \leq \alpha - \varepsilon$\\
+\indent $\alpha - \alpha \leq -\varepsilon$\\
+\indent $0 \leq -\varepsilon$\\
+\indent $0 \geq \varepsilon$\\
+This contradicts $\varepsilon > 0$ and cannot be true, by the second criteria of supremum, which states $\alpha \leq$ all upper bounds, therefore $A$ is not empty.\\ (Same can be said for set $B$)\\
+Since both sets, $A$ and $B$ are not empty, then by defn. of Union $X = (A \cup B)$ is also not empty, guaranteed to have a minimum of one element.\\
+(Note: that only one set of a union needs not be empty for the union to not be empty).\\
+\\
+(Remember: \\
+\indent $X = (A \cup B) = \{x \mid x \in A \lor x \in B\}$\\
+\indent $\sup(A) = \alpha$ and $\sup(B) = \beta$ )\\
+Let $\zeta = \max\{\alpha,\beta\}$ then, for all $x \in X$ by defn. of supremum criteria (i)\\
+\indent if $x \in A, x \leq \alpha \leq \zeta$\\
+\indent if $x \in B, x \leq \beta \leq \zeta$\\
+then $x \leq \zeta$ always\\
+Thus by defn. of upper bound, $\zeta$ is an upper bound of $X$, therefore bounded above.
+\\
+In conclusion by axiom of completeness, since $X$ is non-empty, and bounded above then $X$ has a least upper bound.
+\end{proof}
+
+\section{Prove $\sup(X) \geq \max\{\alpha,\beta\}$}
+
+\begin{proof}
+Let $\zeta = \max\{\alpha,\beta\}$, $\sup(X) = s$\\
+Since $\zeta$ is either $\alpha$ or $\beta$:\\
+If $\zeta = \alpha$, for all $a \in A$ since $A \subseteq X$ then $a \in X$ and cause $s$ upper bound of $X$ by supremum criteria (i) $a \leq s$, then $s$ is an upper bound of $A$, then by supremum criteria (ii) $\zeta = \alpha \leq s$\\
+If $\zeta = \beta$, for all $b \in B$ since $B \subseteq X$ then $b \in X$ and cause $s$ upper bound of $X$ by supremum criteria (i) $b \leq s$, then $s$ is an upper bound of $B$, then by supremum criteria (ii) $\zeta = \beta \leq s$\\
+Thus in either case $\zeta \leq s$
+\end{proof}
+
+\section{Can $\sup(X) > \max\{\alpha,\beta\}$?}
+No, equality can be proven.
+\begin{proposition}
+$\max\{\alpha,\beta\} = \sup(X)$
+\end{proposition}
+\begin{proof}To prove equality we have to prove both ways:
+\begin{itemize}
+	\item We already proved $\max\{\alpha,\beta\} \leq \sup(X)$, (in previous section).
+	\item We already proved $\max\{\alpha,\beta\}$ is an upper bound of $X$. By supremum criteria (ii): $\sup(X) \leq \max\{\alpha,\beta\}$, (when we proved $X$ is bounded above).
+\end{itemize}
+Therefore, $\sup(X) = \max\{\alpha,\beta\}$
+\end{proof}
+
+\end{document}
